@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "800392654260",
+    "project_id": "mingdevelopment-site",
+    "storage_bucket": "mingdevelopment-site.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800392654260:android:e3351a3f2a88e1cae016e1",
+        "android_client_info": {
+          "package_name": "com.mingapps.rec_mar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "800392654260-6u1lr3sc721v2c64eenfqrspgug1hqda.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYoJ1f2R0WjFoCaiNNPkRq_ldtm3Zeaug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "800392654260-6u1lr3sc721v2c64eenfqrspgug1hqda.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
