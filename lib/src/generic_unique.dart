@@ -59,7 +59,7 @@ class _GenericUniquePageState extends State<GenericUniquePage> {
 
                             Text(
                               'Detalles',
-                              style: Theme.of(context).textTheme.headline4,
+                              style: Theme.of(context).textTheme.headlineSmall,
                             ),
 
                             GestureDetector(

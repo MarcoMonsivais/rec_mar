@@ -51,7 +51,7 @@ class _LastDetailPageState extends State<LastDetailPage> {
 
                       Text(
                         'Detalles',
-                        style: Theme.of(context).textTheme.headline4,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
 
                       const Divider(height: 2.0, thickness: 2.0,),

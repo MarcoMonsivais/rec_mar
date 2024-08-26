@@ -1,4 +1,4 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
+// import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -92,7 +92,7 @@ class _SettingLastTimePageState extends State<SettingLastTimePage> {
                       },
                       child: Text(
                         'Configuración',
-                        style: Theme.of(context).textTheme.headline4,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
 

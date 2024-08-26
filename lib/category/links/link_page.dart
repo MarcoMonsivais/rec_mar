@@ -79,7 +79,7 @@ class _LinkPageState extends State<LinkPage> {
                         },
                         child: Text(
                           'Detalles',
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headlineSmall,
                         ),
                       ),
 

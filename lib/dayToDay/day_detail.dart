@@ -144,7 +144,7 @@ class _DayDetailState extends State<DayDetail> {
                     onTap:() => setState(() {}),
                     child: Text(
                       'Día',
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),
 
@@ -269,7 +269,7 @@ class _DayDetailState extends State<DayDetail> {
                                       },
                                       child: Text(
                                         'CREAR',
-                                        style: Theme.of(context).textTheme.headline4,
+                                        style: Theme.of(context).textTheme.headlineSmall,
                                       ),
                                     ),
 

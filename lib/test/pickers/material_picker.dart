@@ -54,7 +54,7 @@ class _MaterialColorPickerExampleState extends State<MaterialColorPickerExample>
                 style: TextStyle(color: useWhiteForeground(widget.pickerColor) ? Colors.white : Colors.black),
               ),
               style: ElevatedButton.styleFrom(
-                primary: widget.pickerColor,
+                backgroundColor: widget.pickerColor,
                 shadowColor: widget.pickerColor.withOpacity(1),
                 elevation: 10,
               ),
@@ -86,7 +86,7 @@ MaterialPicker(
               },
               child: Icon(Icons.code, color: useWhiteForeground(widget.pickerColor) ? Colors.white : Colors.black),
               style: ElevatedButton.styleFrom(
-                primary: widget.pickerColor,
+                backgroundColor: widget.pickerColor,
                 shadowColor: widget.pickerColor.withOpacity(1),
                 elevation: 10,
               ),

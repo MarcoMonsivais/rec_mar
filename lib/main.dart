@@ -1,5 +1,5 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
+// import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:rec_mar/global.dart' as Globals;
@@ -13,156 +13,156 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  AwesomeNotifications().actionStream.listen((event) async {
-    print('-----------------------------------------------------------');
-    print('event received!');
-    print(event.toMap().toString());
-    print(event.buttonKeyInput);
-    print('-----------------------------------------------------------');
-    String date = DateTime.now().toString().substring(0, DateTime.now().toString().indexOf(' '));
+  // AwesomeNotifications().actionStream.listen((event) async {
+  //   print('-----------------------------------------------------------');
+  //   print('event received!');
+  //   print(event.toMap().toString());
+  //   print(event.buttonKeyInput);
+  //   print('-----------------------------------------------------------');
+  //   String date = DateTime.now().toString().substring(0, DateTime.now().toString().indexOf(' '));
 
-    switch(event.id){
-      case 1:
-        FirebaseFirestore.instance
-          .collection('rec_mar')
-          .doc('listas')
-          .collection('dayToDay')
-          .doc(DateTime.now().toString().substring(0, DateTime.now().toString().indexOf(' ')))
-          .get().then((value) async {
-            DocumentSnapshot ds = value;
-            await FirebaseFirestore.instance
-                .collection('rec_mar')
-                .doc('listas')
-                .collection('dayToDay')
-                .doc(date)
-                .update({
-              'desayuno': ds['desayuno'].toString().isEmpty
-                  ? ''
-                  : ds['desayuno'],
-              'almuerzo': event.buttonKeyInput,
-              'comida': ds['comida'].toString().isEmpty
-                  ? ''
-                  : ds['comida'],
-              'merienda': ds['merienda'].toString().isEmpty
-                  ? ''
-                  : ds['merienda'],
-              'cena': ds['cena'].toString().isEmpty
-                  ? ''
-                  : ds['cena'],
-              'fumar': ds['fumar'].toString().isEmpty
-                  ? ''
-                  : ds['fumar'],
-              'otro': ds['otro'].toString().isEmpty
-                  ? ''
-                  : ds['otro'],
-            });
-        });
-        break;
-      case 2:
-        FirebaseFirestore.instance
-            .collection('rec_mar')
-            .doc('listas')
-            .collection('dayToDay')
-            .doc(DateTime.now().toString().substring(0, DateTime.now().toString().indexOf(' ')))
-            .get().then((value) async {
-          DocumentSnapshot ds = value;
-          await FirebaseFirestore.instance
-              .collection('rec_mar')
-              .doc('listas')
-              .collection('dayToDay')
-              .doc(date)
-              .update({
-            'desayuno': ds['desayuno'].toString().isEmpty
-                ? ''
-                : ds['desayuno'],
-            'almuerzo': ds['almuerzo'].toString().isEmpty
-                ? ''
-                : ds['almuerzo'],
-            'comida': event.buttonKeyInput,
-            'merienda': ds['merienda'].toString().isEmpty
-                ? ''
-                : ds['merienda'],
-            'cena': ds['cena'].toString().isEmpty
-                ? ''
-                : ds['cena'],
-            'fumar': ds['fumar'].toString().isEmpty
-                ? ''
-                : ds['fumar'],
-            'otro': ds['otro'].toString().isEmpty
-                ? ''
-                : ds['otro'],
-          });
-        });
-        break;
-      case 3:
-        FirebaseFirestore.instance
-            .collection('rec_mar')
-            .doc('listas')
-            .collection('dayToDay')
-            .doc(DateTime.now().toString().substring(0, DateTime.now().toString().indexOf(' ')))
-            .get().then((value) async {
-          DocumentSnapshot ds = value;
-          await FirebaseFirestore.instance
-              .collection('rec_mar')
-              .doc('listas')
-              .collection('dayToDay')
-              .doc(date)
-              .update({
-            'desayuno': ds['desayuno'].toString().isEmpty
-                ? ''
-                : ds['desayuno'],
-            'almuerzo': ds['almuerzo'].toString().isEmpty
-                ? ''
-                : ds['almuerzo'],
-            'comida': ds['comida'].toString().isEmpty
-                ? ''
-                : ds['comida'],
-            'merienda': ds['merienda'].toString().isEmpty
-                ? ''
-                : ds['merienda'],
-            'cena': event.buttonKeyInput,
-            'fumar': ds['fumar'].toString().isEmpty
-                ? ''
-                : ds['fumar'],
-            'otro': ds['otro'].toString().isEmpty
-                ? ''
-                : ds['otro'],
-          });
-        });
-        break;
-    }
+  //   switch(event.id){
+  //     case 1:
+  //       FirebaseFirestore.instance
+  //         .collection('rec_mar')
+  //         .doc('listas')
+  //         .collection('dayToDay')
+  //         .doc(DateTime.now().toString().substring(0, DateTime.now().toString().indexOf(' ')))
+  //         .get().then((value) async {
+  //           DocumentSnapshot ds = value;
+  //           await FirebaseFirestore.instance
+  //               .collection('rec_mar')
+  //               .doc('listas')
+  //               .collection('dayToDay')
+  //               .doc(date)
+  //               .update({
+  //             'desayuno': ds['desayuno'].toString().isEmpty
+  //                 ? ''
+  //                 : ds['desayuno'],
+  //             'almuerzo': event.buttonKeyInput,
+  //             'comida': ds['comida'].toString().isEmpty
+  //                 ? ''
+  //                 : ds['comida'],
+  //             'merienda': ds['merienda'].toString().isEmpty
+  //                 ? ''
+  //                 : ds['merienda'],
+  //             'cena': ds['cena'].toString().isEmpty
+  //                 ? ''
+  //                 : ds['cena'],
+  //             'fumar': ds['fumar'].toString().isEmpty
+  //                 ? ''
+  //                 : ds['fumar'],
+  //             'otro': ds['otro'].toString().isEmpty
+  //                 ? ''
+  //                 : ds['otro'],
+  //           });
+  //       });
+  //       break;
+  //     case 2:
+  //       FirebaseFirestore.instance
+  //           .collection('rec_mar')
+  //           .doc('listas')
+  //           .collection('dayToDay')
+  //           .doc(DateTime.now().toString().substring(0, DateTime.now().toString().indexOf(' ')))
+  //           .get().then((value) async {
+  //         DocumentSnapshot ds = value;
+  //         await FirebaseFirestore.instance
+  //             .collection('rec_mar')
+  //             .doc('listas')
+  //             .collection('dayToDay')
+  //             .doc(date)
+  //             .update({
+  //           'desayuno': ds['desayuno'].toString().isEmpty
+  //               ? ''
+  //               : ds['desayuno'],
+  //           'almuerzo': ds['almuerzo'].toString().isEmpty
+  //               ? ''
+  //               : ds['almuerzo'],
+  //           'comida': event.buttonKeyInput,
+  //           'merienda': ds['merienda'].toString().isEmpty
+  //               ? ''
+  //               : ds['merienda'],
+  //           'cena': ds['cena'].toString().isEmpty
+  //               ? ''
+  //               : ds['cena'],
+  //           'fumar': ds['fumar'].toString().isEmpty
+  //               ? ''
+  //               : ds['fumar'],
+  //           'otro': ds['otro'].toString().isEmpty
+  //               ? ''
+  //               : ds['otro'],
+  //         });
+  //       });
+  //       break;
+  //     case 3:
+  //       FirebaseFirestore.instance
+  //           .collection('rec_mar')
+  //           .doc('listas')
+  //           .collection('dayToDay')
+  //           .doc(DateTime.now().toString().substring(0, DateTime.now().toString().indexOf(' ')))
+  //           .get().then((value) async {
+  //         DocumentSnapshot ds = value;
+  //         await FirebaseFirestore.instance
+  //             .collection('rec_mar')
+  //             .doc('listas')
+  //             .collection('dayToDay')
+  //             .doc(date)
+  //             .update({
+  //           'desayuno': ds['desayuno'].toString().isEmpty
+  //               ? ''
+  //               : ds['desayuno'],
+  //           'almuerzo': ds['almuerzo'].toString().isEmpty
+  //               ? ''
+  //               : ds['almuerzo'],
+  //           'comida': ds['comida'].toString().isEmpty
+  //               ? ''
+  //               : ds['comida'],
+  //           'merienda': ds['merienda'].toString().isEmpty
+  //               ? ''
+  //               : ds['merienda'],
+  //           'cena': event.buttonKeyInput,
+  //           'fumar': ds['fumar'].toString().isEmpty
+  //               ? ''
+  //               : ds['fumar'],
+  //           'otro': ds['otro'].toString().isEmpty
+  //               ? ''
+  //               : ds['otro'],
+  //         });
+  //       });
+  //       break;
+  //   }
 
-  });
+  // });
 
-  AwesomeNotifications().initialize(
-      'resource://drawable/icon',
-      [
-        NotificationChannel(
-            channelGroupKey: 'basic_channel_group',
-            channelKey: 'basic_channel',
-            channelName: 'Basic notifications',
-            channelDescription: 'Notification channel for basic tests',
-            defaultColor: Color(0xFF9D50DD),
-            ledColor: Colors.white),
-        NotificationChannel(
-          channelGroupKey: 'schedule_tests',
-          channelKey: 'scheduled',
-          channelName: 'Scheduled notifications',
-          channelDescription: 'Notifications with schedule functionality',
-          defaultColor: Color(0xFF9D50DD),
-          ledColor: Color(0xFF9D50DD),
-          vibrationPattern: lowVibrationPattern,
-          importance: NotificationImportance.High,
-          defaultRingtoneType: DefaultRingtoneType.Alarm,
-          criticalAlerts: true,
-        ),
-      ],
-      channelGroups: [
-        NotificationChannelGroup(channelGroupkey: 'basic_channel_group', channelGroupName: 'Basic group'),
-        NotificationChannelGroup(channelGroupkey: 'schedule_tests', channelGroupName: 'Schedule tests'),
-      ],
-      debug: true
-  );
+  // AwesomeNotifications().initialize(
+  //     'resource://drawable/icon',
+  //     [
+  //       NotificationChannel(
+  //           channelGroupKey: 'basic_channel_group',
+  //           channelKey: 'basic_channel',
+  //           channelName: 'Basic notifications',
+  //           channelDescription: 'Notification channel for basic tests',
+  //           defaultColor: Color(0xFF9D50DD),
+  //           ledColor: Colors.white),
+  //       NotificationChannel(
+  //         channelGroupKey: 'schedule_tests',
+  //         channelKey: 'scheduled',
+  //         channelName: 'Scheduled notifications',
+  //         channelDescription: 'Notifications with schedule functionality',
+  //         defaultColor: Color(0xFF9D50DD),
+  //         ledColor: Color(0xFF9D50DD),
+  //         vibrationPattern: lowVibrationPattern,
+  //         importance: NotificationImportance.High,
+  //         defaultRingtoneType: DefaultRingtoneType.Alarm,
+  //         criticalAlerts: true,
+  //       ),
+  //     ],
+  //     channelGroups: [
+  //       NotificationChannelGroup(channelGroupkey: 'basic_channel_group', channelGroupName: 'Basic group'),
+  //       NotificationChannelGroup(channelGroupkey: 'schedule_tests', channelGroupName: 'Schedule tests'),
+  //     ],
+  //     debug: true
+  // );
 
   runApp(MyApp());
 }

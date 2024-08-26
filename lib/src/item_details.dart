@@ -67,7 +67,7 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                       Text(
                         'Detalles',
-                        style: Theme.of(context).textTheme.headline4,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
 
                       const Divider(height: 2.0, thickness: 2.0,),
@@ -82,7 +82,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                           autofocus: true,
                           cursorColor: Colors.black,
                           keyboardType: TextInputType.multiline,
-                          style: Theme.of(context).textTheme.headline6,
+                          style: Theme.of(context).textTheme.headlineMedium,
                           textCapitalization: TextCapitalization.sentences,
                           decoration: const InputDecoration(
                             focusedBorder: OutlineInputBorder(

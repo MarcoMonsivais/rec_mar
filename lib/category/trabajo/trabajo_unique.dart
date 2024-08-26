@@ -58,7 +58,7 @@ class _TrabajoUniquePageState extends State<TrabajoUniquePage> {
 
                             Text(
                               'Detalles',
-                              style: Theme.of(context).textTheme.headline4,
+                              style: Theme.of(context).textTheme.headlineSmall,
                             ),
 
                             GestureDetector(

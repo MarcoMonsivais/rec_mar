@@ -71,7 +71,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       onTap: () => setState(() {}),
                       child: Text(
                         'Categoria',
-                        style: Theme.of(context).textTheme.headline4,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
 

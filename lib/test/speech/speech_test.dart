@@ -141,7 +141,7 @@ class _SpeechTestState extends State<SpeechTest> {
                   child: Stack(
                     children: <Widget>[
                       Container(
-                        color: Theme.of(context).selectedRowColor,
+                        color: Theme.of(context).cardColor,
                         child: Center(
                           child: Text(
                             lastWords,
@@ -196,7 +196,7 @@ class _SpeechTestState extends State<SpeechTest> {
           ),
           Container(
             padding: EdgeInsets.symmetric(vertical: 20),
-            color: Theme.of(context).backgroundColor,
+            color: Theme.of(context).cardColor,
             child: Center(
               child: speech.isListening
                   ? Text(

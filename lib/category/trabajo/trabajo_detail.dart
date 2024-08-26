@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_picker/Picker.dart';
+// import 'package:flutter_picker/Picker.dart';
 import 'package:rec_mar/category/trabajo/trabajo_unique.dart';
 import 'package:rec_mar/global.dart';
 
@@ -55,7 +55,7 @@ class _TrabajoDetailPageState extends State<TrabajoDetailPage> {
                         },
                         child: Text(
                           'Tareas',
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headlineSmall,
                         ),
                       ),
 

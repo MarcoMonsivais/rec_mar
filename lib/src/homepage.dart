@@ -1,5 +1,5 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+// import 'package:awesome_notifications/awesome_notifications.dart';
+// import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:rec_mar/category/trabajo/trabajo_page.dart';
 import 'package:rec_mar/category/links/link_page.dart';
 import 'package:rec_mar/global_fun.dart' as Functions;
@@ -324,7 +324,7 @@ class _MomePageState extends State<MomePage> {
                 },
                 child: Text(
                   'Última vez ' ,//+ DateTime.now().toString().substring(0,11),
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
               GestureDetector(
@@ -345,7 +345,7 @@ class _MomePageState extends State<MomePage> {
             autofocus: false,
             cursorColor: Colors.black,
             keyboardType: TextInputType.multiline,
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.headlineMedium,
             textCapitalization: TextCapitalization.sentences,
             decoration: InputDecoration(
               focusedBorder: const OutlineInputBorder(
@@ -496,7 +496,7 @@ class _MomePageState extends State<MomePage> {
 
         Text(
           'Agregar',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
 
         const Divider(height: 2.0, thickness: 2.0,),
@@ -520,7 +520,7 @@ class _MomePageState extends State<MomePage> {
                   autofocus: false,
                   cursorColor: Colors.black,
                   keyboardType: TextInputType.multiline,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: Theme.of(context).textTheme.headlineMedium,
                   textCapitalization: TextCapitalization.sentences,
                   decoration: InputDecoration(
                     focusedBorder: const OutlineInputBorder(
@@ -748,7 +748,7 @@ class _MomePageState extends State<MomePage> {
                       CategoryPage())),
           child: Text(
             'Categoria',
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
         ),
 
@@ -853,7 +853,7 @@ class _MomePageState extends State<MomePage> {
           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DayDetail(DateTime.now().toString().substring(0,DateTime.now().toString().indexOf(' '))))),
           child: Text(
             'Día a día',
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
         ),
 
@@ -911,7 +911,7 @@ class _MomePageState extends State<MomePage> {
 
           Text(
             'Configuración',
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
 
           const Divider(height: 2.0, thickness: 2.0,),
@@ -929,27 +929,27 @@ class _MomePageState extends State<MomePage> {
                     child: GestureDetector(
                       onTap: (){
 
-                        setState(() {
-                          op = 'fondo';
-                        });
+                        // setState(() {
+                        //   op = 'fondo';
+                        // });
 
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              titlePadding: const EdgeInsets.all(0),
-                              contentPadding: const EdgeInsets.all(0),
-                              content: SingleChildScrollView(
-                                child: MaterialPicker(
-                                  pickerColor:  widget.CB.fondoColor!,
-                                  onColorChanged: changeColor,
-                                  enableLabel: true,
-                                  portraitOnly: false,
-                                ),
-                              ),
-                            );
-                          },
-                        );
+                        // showDialog(
+                        //   context: context,
+                        //   builder: (BuildContext context) {
+                        //     return AlertDialog(
+                        //       titlePadding: const EdgeInsets.all(0),
+                        //       contentPadding: const EdgeInsets.all(0),
+                        //       content: SingleChildScrollView(
+                        //         child: MaterialPicker(
+                        //           pickerColor:  widget.CB.fondoColor!,
+                        //           onColorChanged: changeColor,
+                        //           enableLabel: true,
+                        //           portraitOnly: false,
+                        //         ),
+                        //       ),
+                        //     );
+                        //   },
+                        // );
 
                       },
                       child: const Card(
@@ -967,27 +967,27 @@ class _MomePageState extends State<MomePage> {
                     child: GestureDetector(
                       onTap: (){
 
-                        setState(() {
-                          op = 'letra';
-                        });
+                        // setState(() {
+                        //   op = 'letra';
+                        // });
 
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              titlePadding: const EdgeInsets.all(0),
-                              contentPadding: const EdgeInsets.all(0),
-                              content: SingleChildScrollView(
-                                child: MaterialPicker(
-                                  pickerColor: widget.CB.letraColor!,
-                                  onColorChanged: changeColor,
-                                  enableLabel: true,
-                                  portraitOnly: false,
-                                ),
-                              ),
-                            );
-                          },
-                        );
+                        // showDialog(
+                        //   context: context,
+                        //   builder: (BuildContext context) {
+                        //     return AlertDialog(
+                        //       titlePadding: const EdgeInsets.all(0),
+                        //       contentPadding: const EdgeInsets.all(0),
+                        //       content: SingleChildScrollView(
+                        //         child: MaterialPicker(
+                        //           pickerColor: widget.CB.letraColor!,
+                        //           onColorChanged: changeColor,
+                        //           enableLabel: true,
+                        //           portraitOnly: false,
+                        //         ),
+                        //       ),
+                        //     );
+                        //   },
+                        // );
 
                       },
                       child: const Card(
@@ -1005,25 +1005,25 @@ class _MomePageState extends State<MomePage> {
                     child: GestureDetector(
                       onTap: (){
 
-                        op = 'card';
+                        // op = 'card';
 
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              titlePadding: const EdgeInsets.all(0),
-                              contentPadding: const EdgeInsets.all(0),
-                              content: SingleChildScrollView(
-                                child: MaterialPicker(
-                                  pickerColor: widget.CB.cardColor!,
-                                  onColorChanged: changeColor,
-                                  enableLabel: true,
-                                  portraitOnly: false,
-                                ),
-                              ),
-                            );
-                          },
-                        );
+                        // showDialog(
+                        //   context: context,
+                        //   builder: (BuildContext context) {
+                        //     return AlertDialog(
+                        //       titlePadding: const EdgeInsets.all(0),
+                        //       contentPadding: const EdgeInsets.all(0),
+                        //       content: SingleChildScrollView(
+                        //         child: MaterialPicker(
+                        //           pickerColor: widget.CB.cardColor!,
+                        //           onColorChanged: changeColor,
+                        //           enableLabel: true,
+                        //           portraitOnly: false,
+                        //         ),
+                        //       ),
+                        //     );
+                        //   },
+                        // );
 
                       },
                       child: const Card(
@@ -1041,25 +1041,25 @@ class _MomePageState extends State<MomePage> {
                     child: GestureDetector(
                       onTap: (){
 
-                        op = 'floating';
+                        // op = 'floating';
 
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              titlePadding: const EdgeInsets.all(0),
-                              contentPadding: const EdgeInsets.all(0),
-                              content: SingleChildScrollView(
-                                child: MaterialPicker(
-                                  pickerColor:  widget.CB.floatingColor!,
-                                  onColorChanged: changeColor,
-                                  enableLabel: true,
-                                  portraitOnly: false,
-                                ),
-                              ),
-                            );
-                          },
-                        );
+                        // showDialog(
+                        //   context: context,
+                        //   builder: (BuildContext context) {
+                        //     return AlertDialog(
+                        //       titlePadding: const EdgeInsets.all(0),
+                        //       contentPadding: const EdgeInsets.all(0),
+                        //       content: SingleChildScrollView(
+                        //         child: MaterialPicker(
+                        //           pickerColor:  widget.CB.floatingColor!,
+                        //           onColorChanged: changeColor,
+                        //           enableLabel: true,
+                        //           portraitOnly: false,
+                        //         ),
+                        //       ),
+                        //     );
+                        //   },
+                        // );
 
                       },
                       child: const Card(
@@ -1146,37 +1146,37 @@ class _MomePageState extends State<MomePage> {
 
                 GestureDetector(
                   onTap: (){
-                    try {
-                      AwesomeNotifications().createNotification(
-                        schedule: NotificationCalendar.fromDate(date: DateTime
-                            .parse(_schedueleAlarm.text)),
-                        content: NotificationContent(
-                          id: 4,
-                          channelKey: 'basic_channel',
-                          title: _nameAlarm.text,
-                          body: _bodyAlarm.text,
-                          wakeUpScreen: true,
-                          category: NotificationCategory.Message,
-                          autoDismissible: false,
-                          hideLargeIconOnExpand: true,
-                        ),
-                        actionButtons: [
-                          NotificationActionButton(
-                              key: 'REPLY',
-                              label: _responseAlarm.text,
-                              enabled: true,
-                              buttonType: ActionButtonType.InputField,
-                              icon: 'asset://assets/icon-app.png'
-                          )
-                        ],
-                      ).whenComplete(() {
-                        Functions.showMyDialog('Notificación creada', context);
-                        //Clear
+                    // try {
+                    //   AwesomeNotifications().createNotification(
+                    //     schedule: NotificationCalendar.fromDate(date: DateTime
+                    //         .parse(_schedueleAlarm.text)),
+                    //     content: NotificationContent(
+                    //       id: 4,
+                    //       channelKey: 'basic_channel',
+                    //       title: _nameAlarm.text,
+                    //       body: _bodyAlarm.text,
+                    //       wakeUpScreen: true,
+                    //       category: NotificationCategory.Message,
+                    //       autoDismissible: false,
+                    //       hideLargeIconOnExpand: true,
+                    //     ),
+                    //     actionButtons: [
+                    //       NotificationActionButton(
+                    //           key: 'REPLY',
+                    //           label: _responseAlarm.text,
+                    //           enabled: true,
+                    //           buttonType: ActionButtonType.InputField,
+                    //           icon: 'asset://assets/icon-app.png'
+                    //       )
+                    //     ],
+                    //   ).whenComplete(() {
+                    //     Functions.showMyDialog('Notificación creada', context);
+                    //     //Clear
                         
-                      });
-                    } catch (onError){
-                      Functions.showMyDialog('Error: ' + onError.toString(), context);
-                    }
+                    //   });
+                    // } catch (onError){
+                    //   Functions.showMyDialog('Error: ' + onError.toString(), context);
+                    // }
 
                   },
                   child: Container(
@@ -1249,7 +1249,7 @@ class _MomePageState extends State<MomePage> {
   //
   //           Text(
   //             'Dieta',
-  //             style: Theme.of(context).textTheme.headline4,
+  //             style: Theme.of(context).textTheme.headlineSmall,
   //           ),
   //
   //           const Divider(height: 2.0, thickness: 2.0,),
@@ -1306,7 +1306,7 @@ class _MomePageState extends State<MomePage> {
 
           Text(
             'Horario de pastillas',
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
 
           const Divider(height: 2.0, thickness: 2.0,),
