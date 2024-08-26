@@ -11,7 +11,15 @@ import 'dart:async';
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+    apiKey: "AIzaSyA6oZ9sT3a9vLqjcAuvWc6yTC3wuhNgD04",
+    authDomain: "mingdevelopment-site.firebaseapp.com",
+    projectId: "mingdevelopment-site",
+    storageBucket: "mingdevelopment-site.appspot.com",
+    messagingSenderId: "800392654260",
+    appId: "1:800392654260:web:f62e900c62675bf0e016e1",
+  ));
 
   // AwesomeNotifications().actionStream.listen((event) async {
   //   print('-----------------------------------------------------------');
