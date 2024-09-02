@@ -1,5 +1,6 @@
 // import 'package:awesome_notifications/awesome_notifications.dart';
 // import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:rec_mar/category/trabajo/trabajo_page.dart';
 import 'package:rec_mar/category/links/link_page.dart';
 import 'package:rec_mar/global_fun.dart' as Functions;
@@ -17,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rec_mar/global.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rec_mar/textToSpeech/tts.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'generic_details.dart';
 import 'package:intl/intl.dart';
@@ -29,9 +31,11 @@ class MomePage extends StatefulWidget {
   MomePage(this.CB, this.IB);
 
   @override
-  State<MomePage> createState() => _MomePageState();
+ _MomePageState createState() => _MomePageState();
 
 }
+
+enum MomeState { playing, stopped, paused, continued }
 
 class _MomePageState extends State<MomePage> {
 
@@ -75,6 +79,10 @@ class _MomePageState extends State<MomePage> {
   String today = '';
 
   late DateTime mainDate;
+
+  late FlutterTts flutterTts;
+  String? _newVoiceText;
+  MomeState ttsState = MomeState.stopped;
 
   @override
   void initState() {
@@ -127,7 +135,63 @@ class _MomePageState extends State<MomePage> {
       });
     });
 
+    initTts();
+
     super.initState();
+  }
+
+  Future _setAwaitOptions() async {
+      await
+       flutterTts.awaitSpeakCompletion(true);
+  }
+
+  initTts() {
+    flutterTts = FlutterTts();
+
+    _setAwaitOptions();
+
+    flutterTts.setStartHandler(() {
+      setState(() {
+        print("Playing");
+        ttsState = MomeState.playing;
+      });
+    });
+
+    flutterTts.setCompletionHandler(() {
+      setState(() {
+        print("Complete");
+        ttsState = MomeState.stopped;
+      });
+    });
+
+    flutterTts.setCancelHandler(() {
+      setState(() {
+        print("Cancel");
+        ttsState = MomeState.stopped;
+      });
+    });
+
+      flutterTts.setPauseHandler(() {
+        setState(() {
+          print("Paused");
+          ttsState = MomeState.paused;
+        });
+      });
+
+      flutterTts.setContinueHandler(() {
+        setState(() {
+          print("Continued");
+          ttsState = MomeState.continued;
+        });
+      });
+    
+
+    flutterTts.setErrorHandler((msg) {
+      setState(() {
+        print("error: $msg");
+        ttsState = MomeState.stopped;
+      });
+    });
   }
 
   @override
@@ -261,41 +325,25 @@ class _MomePageState extends State<MomePage> {
         },
         child: const Icon(Icons.add),
       ): Container(),
-      body: Stack(
-        children: [
-
-          Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/backgrounds/back-2.jpg"),
-                      fit: BoxFit.cover))
-          ),
-
-          Center(
-            child: Container(
-              margin: const EdgeInsets.all(10.0),
-              height: MediaQuery.of(context).size.height * 0.85,
-              width: MediaQuery.of(context).size.width * 0.85,
-              decoration: BoxDecoration(
-                  color: widget.CB.fondoColor,
-                  borderRadius: const BorderRadius.all(Radius.circular(40.0))
-              ),
-              child: PageView(
-                controller: controllerPV,
-                children: [
-                  _lastTime(),
-                  _add(),
-                  _category(),
-                  _dayToDay(),
-                  _settings(),
-                  // _pastillas()
-                  // _diet()
-                ],
-              )
-            ),
-          ),
-
-        ],
+      body: Container(
+        margin: const EdgeInsets.all(10.0),
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            color: widget.CB.fondoColor,
+            borderRadius: const BorderRadius.all(Radius.circular(40.0))
+        ),
+        child: PageView(
+          controller: controllerPV,
+          children: [
+            _lastTime(),
+            _add(),
+            _category(),
+            _dayToDay(),
+            _tts(),
+            _settings(),
+          ],
+        )
       )
     );
   }
@@ -422,9 +470,9 @@ class _MomePageState extends State<MomePage> {
                           padding: EdgeInsets.zero,
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            crossAxisSpacing: 3.0,
-                            mainAxisSpacing: 3.0,
-                            childAspectRatio: MediaQuery.of(context).size.width * 1.5 / (MediaQuery.of(context).size.height * 0.4),),
+                            crossAxisSpacing: 1.2,
+                            mainAxisSpacing: 1.2,
+                            childAspectRatio: MediaQuery.of(context).size.width * 1.3 / (MediaQuery.of(context).size.height * 0.3),),
                           itemCount: snapshot.data!.docs.length,
                           itemBuilder: (context, index) {
 
@@ -513,7 +561,7 @@ class _MomePageState extends State<MomePage> {
                   color: Colors.white,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0))
                 ),
-                width: MediaQuery.of(context).size.width * 0.75,
+                width: MediaQuery.of(context).size.width * 0.85,
                 child: TextFormField(
                   controller: _newMessage,
                   focusNode: myFocusNode,
@@ -1223,7 +1271,7 @@ class _MomePageState extends State<MomePage> {
                   Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: GestureDetector(
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => TextTest())),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => TTSPage())),
                           child: Container(
                               width: MediaQuery.of(context).size.width * 0.9,
                               height: 35,
@@ -1428,6 +1476,103 @@ class _MomePageState extends State<MomePage> {
         ]
       )
     );
+  }
+
+  _tts(){
+    
+    Future _speak() async {
+      await flutterTts.setVoice({"name": "Karen (female)", "locale": "es-MX"});
+
+      if (_newVoiceText != null) {
+        if (_newVoiceText!.isNotEmpty) {
+          await flutterTts.speak(_newVoiceText!);
+        }
+      }
+    }
+
+    Future _stop() async {
+      var result = await flutterTts.stop();
+      if (result == 1) setState(() => ttsState = MomeState.stopped);
+    }
+
+    Future _pause() async {
+      var result = await flutterTts.pause();
+      if (result == 1) setState(() => ttsState = MomeState.paused);
+    }
+
+    Widget _inputSection() => Container(
+      alignment: Alignment.topCenter,
+      padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      decoration: BoxDecoration(
+        border: Border.all(width: 1.0, color: Colors.grey),
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      child: TextField(
+        maxLines: 8,
+        onChanged: (String value) {
+          setState(() {
+            _newVoiceText = value;
+          });
+        },
+      ));
+
+ Column _buildButtonColumn(Color color, Color splashColor, IconData icon,
+      String label, Function func) {
+    return Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+              icon: Icon(icon),
+              color: color,
+              splashColor: splashColor,
+              onPressed: () => func()),
+          Container(
+              margin: const EdgeInsets.only(top: 8.0),
+              child: Text(label,
+                  style: TextStyle(
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.w400,
+                      color: color)))
+        ]);
+  }
+
+  Widget _btnSection() {
+    return Container(
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        child:
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          _buildButtonColumn(Colors.green, Colors.greenAccent,
+              Icons.play_arrow, 'PLAY', _speak),
+          _buildButtonColumn(
+              Colors.red, Colors.redAccent, Icons.stop, 'STOP', _stop),
+          _buildButtonColumn(
+              Colors.blue, Colors.blueAccent, Icons.pause, 'PAUSE', _pause),
+        ]));
+    
+  }
+
+    return Column(
+      children: [
+        
+        const SizedBox(height: 10.0,),
+
+        Text(
+          'Traduce texto a voz',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+
+        const Divider(height: 2.0, thickness: 2.0,),
+
+        _inputSection(),
+
+        Expanded(child: Align(
+          alignment: Alignment.bottomCenter,
+          child: _btnSection())),
+      ],
+    );
+
   }
 
   DateTime getDate(DateTime d) => DateTime(d.year, d.month, d.day);
@@ -1663,4 +1808,3 @@ class _MomePageState extends State<MomePage> {
   }
 
 }
-
